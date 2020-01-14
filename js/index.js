@@ -1,25 +1,19 @@
 // Your code goes here
-// [ ] `mouseover`
-// * [ ] `keydown`
-// * [ ] `wheel`
-// * [ ] `drag / drop`
-// * [ ] `load`
-// * [ ] `focus`
-// * [ ] `resize`
-// * [ ] `scroll`
-// * [ ] `select`
-// * [ ] `dblclick`
 
-//1---------click----------
+
+//1---------"click" event and "preventdefault()"---------
 
 const navlinks = document.querySelectorAll(".nav-link")
 navlinks.forEach(link=>{
-link.addEventListener("click", ()=>{
+link.addEventListener("click", (event)=>{
     link.style.color = "pink"
+    event.preventDefault()
+    console.log("I changed color but I prevented myself from refreshing!")
     
     })
+
 })
-//2-------dblclick--------
+//2-------"dblclick" event--------
 
 const changeImg = document.querySelector("img[src='img/fun-bus.jpg']")
 
@@ -28,7 +22,7 @@ changeImg.addEventListener("dblclick", ()=>{
 })
 
 
-//3-------mouseover---------
+//3-------"mouseover" event---------
 
 const advgoImg = document.querySelector(".img-content")
 advgoImg.addEventListener("mouseenter",function(){
@@ -36,7 +30,7 @@ advgoImg.style.transform ="scale(1.5)"
 console.log("I am scaled up")
 })
 
-//4----------mouseenter----
+//4----------"mouseenter" event----
 
 const subHeading = document.querySelector("h2");
 
@@ -46,18 +40,18 @@ subHeading.addEventListener("mouseover", ()=>{
 })
 
 
-//5-----------mouseleave----
+//5-----------"mouseleave" event----
 
 subHeading.addEventListener("mouseleave", ()=>{
     subHeading.style.color = "red"
     console.log("I am red now")
 })
 
-//6-------resize-----------
+//6-------"resize" event-----------
 
 
 // const changeImg = document.querySelector("img[src='img/fun-bus.jpg']")
-//const changeTmg is already been declared
+//const changeTmg is already been declared!
 
 
 window.addEventListener("resize", ()=>{
@@ -65,14 +59,25 @@ window.addEventListener("resize", ()=>{
 })
 
 
-
-//7------------
-
+//7------------"keydown" event-------
 
 
+document.addEventListener("keydown",(event)=>{
+    if (event.key === "Enter"){
+        alert("Enter was pressed!")
+    }
+})
+
+//8-------------"keyup" event------
+// const footer = document.querySelector(".footer")
+
+document.addEventListener("keyup", (event)=>{
+    
+})
 
 
-//8-------------
+
+
 
 
 
@@ -86,9 +91,26 @@ window.addEventListener("resize", ()=>{
 
 
 
-//----event propagation-----nested element
+//----event propagation-----nested elements(Parent:div-child:button)
+
+const section = document.querySelector(".destination")
+section.addEventListener("click", ()=>{
+    section.style.backgroundColor = "yellow"
+    console.log("I am the last")
+
+    const funInTheSun = document.querySelector("p")
 
 
+})
 
+const button = document.querySelector(".btn")
+
+button.addEventListener("click", (event)=>{
+button.style.fontSize = "3.5rem";
+
+event.stopPropagation()
+
+})
 
 //------prevent default-----
+
