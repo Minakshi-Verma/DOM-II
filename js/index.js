@@ -86,7 +86,7 @@ document.addEventListener("keyup",(event)=>{
 })
 
 
-//------------mousemove------------allkeys except shift, fn, capslock
+//------------mousemove------------
 
 const parag = document.querySelector(".text-content h2")
 parag.addEventListener("mousemove",(event)=>{
